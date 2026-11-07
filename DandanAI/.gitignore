@@ -12,3 +12,9 @@ frontend/.next/
 .terraform/
 *.tfstate*
 *.tfvars
+
+# Local Python environment
+backend/.venv/
+
+# Local agent configuration
+.agents/
