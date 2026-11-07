@@ -1,0 +1,14 @@
+.env
+*.env.local
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+backend/storage/
+storage/
+frontend/node_modules/
+frontend/.next/
+*.log
+.terraform/
+*.tfstate*
+*.tfvars

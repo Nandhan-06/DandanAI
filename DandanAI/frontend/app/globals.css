@@ -1,0 +1,6 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+body { @apply bg-ink-50 text-ink-900 antialiased; }
+:focus-visible { outline: 2px solid #2f5fd0; outline-offset: 2px; }
+.prose-md h1 { @apply text-xl font-semibold mt-2 mb-3 font-serif; } .prose-md h2 { @apply text-base font-semibold mt-5 mb-2 border-b border-ink-200 pb-1; }
+.prose-md h3 { @apply text-sm font-semibold mt-3 mb-1; } .prose-md p, .prose-md li { @apply text-sm leading-relaxed; } .prose-md ul { @apply list-disc pl-5; }
+.prose-md blockquote { @apply border-l-4 border-amber-400 bg-amber-50 text-amber-900 px-3 py-1 my-2 text-sm; } .prose-md table { @apply text-sm border-collapse my-2; } .prose-md td, .prose-md th { @apply border border-ink-200 px-2 py-1; }

@@ -1,0 +1,23 @@
+# No local database service by design: Neon is the only application database (configure DATABASE_URL in .env).
+services:
+  backend:
+    build: { context: ., dockerfile: docker/backend.Dockerfile }
+    env_file: .env
+    environment: { STORAGE_DIR: /app/storage }
+    ports: ["8000:8000"]
+    volumes: ["dandanai_storage:/app/storage"]
+    restart: unless-stopped
+  migrate:                      # run once: docker compose run --rm migrate
+    build: { context: ., dockerfile: docker/backend.Dockerfile }
+    env_file: .env
+    command: alembic upgrade head
+    profiles: ["tools"]
+  frontend:
+    build:
+      context: .
+      dockerfile: docker/frontend.Dockerfile
+      args: { NEXT_PUBLIC_API_URL: "${NEXT_PUBLIC_API_URL:-http://localhost:8000}" }
+    ports: ["3000:3000"]
+    depends_on: { backend: { condition: service_healthy } }
+    restart: unless-stopped
+volumes: { dandanai_storage: {} }
