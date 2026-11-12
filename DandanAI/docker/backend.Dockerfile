@@ -3,7 +3,7 @@ ENV PYTHONDONTWRITEBYTECODE=1 PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y --no-install-recommends tesseract-ocr curl ffmpeg && rm -rf /var/lib/apt/lists/* \
     && useradd -m -u 10001 app
 WORKDIR /app
-COPY backend/requirements.txt .
+COPY backend/requirements-local.txt requirements.txt
 RUN pip install --no-cache-dir -r requirements.txt pytesseract
 COPY backend/ .
 RUN mkdir -p /app/storage && chown -R app /app
